@@ -1,5 +1,7 @@
 import clsx from 'clsx';
 
+const workYears = new Date().getFullYear() - 2009;
+
 const brands = [
    {
       name: 'Varilux',
@@ -82,9 +84,9 @@ const prescriptionBasics = [
 
 const highlights = [
    {
-      title: '15 anos cuidando de cada olhar',
+      title: `${workYears} anos cuidando de cada olhar`,
       description:
-         'Começamos como uma loja de bairro e crescemos com a confiança da comunidade, levando atendimento humano e tecnologia de ponta a cada cliente.',
+         'Começamos como uma loja no antigo Shopping H e crescemos com a confiança da comunidade, levando atendimento humano e tecnologia de ponta a cada cliente.',
    },
    {
       title: 'Diversidade de estilos',
@@ -124,6 +126,11 @@ const address = {
    district: 'Vila Nova',
    city: 'Blumenau/SC',
    zip: '89035-402',
+};
+
+const contact = {
+   phone: '(47) 3308-5674',
+   whatsapp: '(47) 99188-5106',
 };
 
 function SectionCard({
@@ -176,7 +183,7 @@ function App() {
                <div className="flex-1 space-y-6">
                   <Badge label="Ótica Du & Edu" />
                   <h1 className="font-display text-3xl font-bold leading-tight text-white sm:text-5xl">
-                     Visão que transforma histórias há 15 anos
+                     Visão que transforma histórias há {workYears} anos
                   </h1>
                   <p className="max-w-2xl text-lg text-slate-200 sm:text-xl">
                      Somos uma ótica familiar em Blumenau que combina
@@ -234,7 +241,7 @@ function App() {
                               </p>
                            </div>
                            <span className="rounded-full bg-white/10 px-4 py-2 text-xs font-semibold text-brand-100 ring-1 ring-brand-300/40">
-                              15 anos
+                              {workYears} anos
                            </span>
                         </div>
                         <div className="grid grid-cols-2 gap-3 text-left">
@@ -269,7 +276,7 @@ function App() {
                               </div>
                            ))}
                         </div>
-                        <p className="text-xs text-slate-300">
+                        <p className="text-slate-300">
                            Cada lente é ajustada considerando sua rotina,
                            profissão e conforto. Nosso objetivo é que você se
                            sinta seguro desde a escolha até a primeira leitura.
@@ -284,6 +291,54 @@ function App() {
             className="mx-auto flex max-w-6xl flex-col gap-10 px-6 py-12 sm:px-10 sm:py-16"
             id="sobre"
          >
+            <SectionCard
+               title="Visite a Ótica Du & Edu"
+               className="scroll-mt-24"
+               id="contato"
+            >
+               <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
+                  <div className="space-y-4">
+                     <p className="text-lg font-semibold text-white">
+                        Estamos prontos para receber você em Blumenau.
+                     </p>
+                     <div className="space-y-2 text-sm text-slate-200">
+                        <p>
+                           <strong>Endereço:</strong> {address.street} -{' '}
+                           {address.district}, {address.city}
+                        </p>
+                        <p>
+                           <strong>CEP:</strong> {address.zip}
+                        </p>
+                        <p>
+                           <strong>Telefone:</strong> {contact.phone}
+                        </p>
+                        <p>
+                           <strong>Whatsapp:</strong> {contact.whatsapp}
+                        </p>
+                        <p>
+                           <strong>Contato rápido:</strong> visite a loja ou
+                           envie mensagem para agendar uma consultoria
+                           personalizada.
+                        </p>
+                     </div>
+                     <div className="flex flex-wrap gap-3 text-sm text-slate-100">
+                        <Badge label="Pequenos ajustes imediatos" />
+                        <Badge label="Equipe especializada" />
+                        <Badge label="Leitura Digital" />
+                     </div>
+                  </div>
+                  <div className="overflow-hidden rounded-2xl border border-white/10 shadow-lg">
+                     <iframe
+                        title="Mapa Ótica Du & Edu"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3551.796190130211!2d-49.090684923967!3d-26.903925490927486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94df19b227f4f7d3%3A0x4fef1e9f0d515e7d!2sR.%20Alm.%20Barroso%2C%2045%20-%20Sala%203%20-%20Vila%20Nova%2C%20Blumenau%20-%20SC%2C%2089035-402!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+                        loading="lazy"
+                        allowFullScreen
+                        className="h-full min-h-[280px] w-full border-0"
+                     />
+                  </div>
+               </div>
+            </SectionCard>
+
             <SectionCard title="Nossa história e propósito" id="sobre">
                <div className="grid gap-8 lg:grid-cols-3">
                   {highlights.map((item) => (
@@ -332,7 +387,7 @@ function App() {
                   {brands.map((brand) => (
                      <div
                         key={brand.name}
-                        className="space-y-3 rounded-2xl border border-white/10 bg-white/5 p-5"
+                        className="space-y-3 rounded-2xl border border-white/10 bg-white/5 p-5 transition-all hover:scale-105"
                      >
                         <div className="flex items-center justify-between gap-2">
                            <h3 className="font-display text-xl font-semibold text-white">
@@ -388,48 +443,6 @@ function App() {
                      altura de montagem, curva base) para que a lente seja
                      ajustada com precisão ao seu rosto e armação.
                   </p>
-               </div>
-            </SectionCard>
-
-            <SectionCard
-               title="Visite a Ótica Du & Edu"
-               className="scroll-mt-24"
-               id="contato"
-            >
-               <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
-                  <div className="space-y-4">
-                     <p className="text-lg font-semibold text-white">
-                        Estamos prontos para receber você em Blumenau.
-                     </p>
-                     <div className="space-y-2 text-sm text-slate-200">
-                        <p>
-                           <strong>Endereço:</strong> {address.street} -{' '}
-                           {address.district}, {address.city}
-                        </p>
-                        <p>
-                           <strong>CEP:</strong> {address.zip}
-                        </p>
-                        <p>
-                           <strong>Contato rápido:</strong> visite a loja ou
-                           envie mensagem para agendar uma consultoria
-                           personalizada.
-                        </p>
-                     </div>
-                     <div className="flex flex-wrap gap-3 text-sm text-slate-100">
-                        <Badge label="Pequenos ajustes imediatos" />
-                        <Badge label="Equipe especializada" />
-                        <Badge label="Leitura Digital" />
-                     </div>
-                  </div>
-                  <div className="overflow-hidden rounded-2xl border border-white/10 shadow-lg">
-                     <iframe
-                        title="Mapa Ótica Du & Edu"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3551.796190130211!2d-49.090684923967!3d-26.903925490927486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94df19b227f4f7d3%3A0x4fef1e9f0d515e7d!2sR.%20Alm.%20Barroso%2C%2045%20-%20Sala%203%20-%20Vila%20Nova%2C%20Blumenau%20-%20SC%2C%2089035-402!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
-                        loading="lazy"
-                        allowFullScreen
-                        className="h-full min-h-[280px] w-full border-0"
-                     />
-                  </div>
                </div>
             </SectionCard>
          </main>
